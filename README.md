@@ -1,7 +1,7 @@
-Role Name
+LXD Ansible role
 =========
 
-A brief description of the role goes here.
+This is a role to install LXD on a host.
 
 Requirements
 ------------
@@ -44,5 +44,4 @@ BSD
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a
-website (HTML is not allowed).
+Coaxial <[64b.it](https://64b.it)>
