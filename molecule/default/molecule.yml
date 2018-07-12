@@ -2,18 +2,21 @@
 dependency:
   name: galaxy
 driver:
-  name: docker
+  name: lxd
 lint:
   name: yamllint
 platforms:
   - name: xenial
-    image: ubuntu:16.04
+    alias: ubuntu/xenial
   - name: artful
-    image: ubuntu:artful
+    alias: ubuntu/artful
   - name: bionic
-    image: ubuntu:bionic
+    alias: ubuntu/bionic
 provisioner:
   name: ansible
+  playbooks:
+    create: ../create.yml
+    destroy: ../destroy.yml
   lint:
     name: ansible-lint
 scenario:
