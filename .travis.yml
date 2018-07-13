@@ -15,11 +15,13 @@ jobs:
         - pip install ansible
         - pip install molecule
         - .travis-scripts/ci-setup.sh
-        - ls -clashBG /var/snap/lxd/common/lxd/unix.socket
+        - sudo chown root:lxd /var/snap/lxd/common/lxd/unix.socket
+        - sudo chmod 660 /var/snap/lxd/common/lxd/unix.socket
+        - ls -clashB /var/snap/lxd/common/lxd/unix.socket
         - sudo lxc list
         - sudo -E lxc list
       script:
-        - molecule --debug test
+        - sudo -E molecule --debug test
 
 notifications:
 webhooks: https://galaxy.ansible.com/api/v1/notifications/
