@@ -16,7 +16,7 @@ jobs:
         - pip install molecule
         - .travis-scripts/ci-setup.sh
         - sudo lxc list
-        - cp -R /home/travis/.ssh $TRAVIS_BUILD_DIR
+        - sudo -u travis lxc list
       script:
         - molecule --debug test
 
