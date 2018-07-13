@@ -19,3 +19,9 @@ def test_lxd_enabled(host):
 
     assert lxd_svc.is_enabled
     assert lxd_svc.is_running
+
+
+def test_lxd_init(host):
+    config_dir = host.file("~/.config/lxc")
+
+    assert config_dir.exists

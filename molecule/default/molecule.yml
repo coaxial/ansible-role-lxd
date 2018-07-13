@@ -12,6 +12,8 @@ platforms:
     alias: ubuntu/artful
   - name: bionic
     alias: ubuntu/bionic
+  - name: cosmic
+    alias: ubuntu/cosmic
 provisioner:
   name: ansible
   playbooks:

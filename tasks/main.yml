@@ -14,3 +14,26 @@
   with_items:
     - lxd
     - lxd-client
+
+- name: Generate LXD preseed file
+  template:
+    src: preseed.yml.j2
+    dest: /tmp/preseed.yml
+    mode: 0600
+    owner: root
+    group: root
+
+- name: Check whether LXD has already been initialized
+  stat:
+    path: "~/.config/lxc/"
+  register: lxc_config_dir
+  changed_when: false
+
+- name: Init LXD
+  shell: "lxd init --preseed < /tmp/preseed.yml"
+  when: not lxc_config_dir.stat.exists
+
+- name: Delete LXD preseed file
+  file:
+    path: /tmp/preseed.yml
+    state: absent

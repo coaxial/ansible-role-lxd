@@ -1,2 +1,6 @@
 ---
-# defaults file for ansible-role-lxd
+lxd__config_daemon_enable: false
+lxd__config_storage_driver: dir
+lxd__config_storage_source: '/var/lib/lxd/storage-pools/default'
+lxd__config_network_ipv4_address: auto
+lxd__config_network_ipv6_address: auto
