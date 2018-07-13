@@ -10,6 +10,7 @@ jobs:
       sudo: required
       install:
         - pip install ansible
+        - pip install molecule
         - sudo apt install snapd -y
         - sudo snap install lxd
         - sudo lxd init --auto
