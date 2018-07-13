@@ -17,7 +17,7 @@ jobs:
         - .travis-scripts/ci-setup.sh
         - ls -clashBG /var/snap/lxd/common/lxd/unix.socket
         - sudo lxc list
-        - sudo -E -u travis lxc list
+        - sudo -E lxc list
       script:
         - molecule --debug test
 
