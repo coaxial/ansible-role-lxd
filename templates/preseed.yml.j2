@@ -1,3 +1,5 @@
+# This is the preseed configuration for LXD. It is managed by Ansible through the coaxial.lxd role
+
 {% if lxd__config_daemon_enable -%}
 config:
   core.https_address: {{ lxd__config_core_https_address }}

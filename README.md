@@ -6,7 +6,9 @@ This is a role to install LXD on a host.
 Requirements
 ------------
 
-A Ubuntu host with Python. Tested with 16.04/Xenial, 17.10/Artful, 18.04/Bionic, 18.10/Cosmic.
+A Ubuntu host with Python. Tested with 16.04/Xenial, 18.04/Bionic, 18.10/Cosmic. 
+
+> **This role won't work with 17.10/Artful because neither the [artful](https://packages.ubuntu.com/artful/lxd) nor the [artful-backports](https://packages.ubuntu.com/artful-backports/lxd) repos ship LXD 3 LTS, which is required for `lxd init --preseed`**
 
 Role Variables
 --------------

@@ -9,7 +9,7 @@ galaxy_info:
     - name: Ubuntu
       versions:
         - xenial
-        - artful
         - bionic
+        - cosmic
   galaxy_tags: []
 dependencies: []

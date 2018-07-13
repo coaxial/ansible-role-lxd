@@ -12,6 +12,8 @@ def test_lxd_install(host):
 
     assert lxd_pkg.is_installed
     assert lxdclient_pkg.is_installed
+    assert lxd_pkg.version.startswith("3.")
+    assert lxdclient_pkg.version.startswith("3.")
 
 
 def test_lxd_enabled(host):
@@ -19,9 +21,3 @@ def test_lxd_enabled(host):
 
     assert lxd_svc.is_enabled
     assert lxd_svc.is_running
-
-
-def test_lxd_init(host):
-    config_dir = host.file("~/.config/lxc")
-
-    assert config_dir.exists

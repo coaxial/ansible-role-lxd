@@ -8,8 +8,6 @@ lint:
 platforms:
   - name: xenial
     alias: ubuntu/xenial
-  - name: artful
-    alias: ubuntu/artful
   - name: bionic
     alias: ubuntu/bionic
   - name: cosmic
