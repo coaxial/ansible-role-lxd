@@ -12,13 +12,12 @@ jobs:
       dist: xenial
       sudo: required
       install:
-        - pip install ansible
-        - pip install molecule
+        - sudo pip install ansible
+        - sudo pip install molecule
         - .travis-scripts/ci-setup.sh
         - sudo lxc list
-        - sudo -u travis lxc list
       script:
-        - molecule --debug test
+        - sudo molecule --debug test
 
 notifications:
 webhooks: https://galaxy.ansible.com/api/v1/notifications/
