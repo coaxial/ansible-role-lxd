@@ -16,7 +16,7 @@ jobs:
         - pip install molecule
         - .travis-scripts/ci-setup.sh
       script:
-        - molecule --debug test
+        - sudo -E sudo -u $USER -E bash -c 'molecule --debug test'
 
 notifications:
 webhooks: https://galaxy.ansible.com/api/v1/notifications/
