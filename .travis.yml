@@ -17,7 +17,7 @@ jobs:
         - .travis-scripts/ci-setup.sh
         - cp -R /home/travis/.ssh $TRAVIS_BUILD_DIR
       script:
-        - sudo -E sudo -u $USER -E bash -c '/usr/local/bin/molecule --debug test'
+        - sudo -E bash -c '/usr/local/bin/molecule --debug test'
 
 notifications:
 webhooks: https://galaxy.ansible.com/api/v1/notifications/
