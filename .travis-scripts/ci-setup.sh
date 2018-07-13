@@ -22,8 +22,3 @@ sudo usermod -a -G lxd travis
 
 # lxd init now sets up a bridge so we no longer need to
 sudo lxd init --auto
-
-# ansible test needs ssh
-if [ ! -f $HOME/.ssh/id_rsa ]; then
-  ssh-keygen -t rsa -b 2048 -f $HOME/.ssh/id_rsa -P ""
-fi
