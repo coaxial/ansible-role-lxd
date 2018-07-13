@@ -18,8 +18,7 @@ while [ ! -S /var/snap/lxd/common/lxd/unix.socket ]; do
   sleep 0.5
 done
 
-user=`whoami`
-sudo usermod -a -G lxd ${user}
+sudo usermod -a -G lxd travis
 
 # lxd init now sets up a bridge so we no longer need to
 sudo lxd init --auto
