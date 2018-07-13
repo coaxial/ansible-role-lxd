@@ -1,40 +1,11 @@
 ---
-- name: Update apt cache
-  apt:
-    update_cache: true
-    cache_valid_time: 216000  # 24 hours
-    # only if not xenial, because we will update apt's cache for xenial later
-  when: ansible_os_family == 'Debian' and ansible_distribution_version is version('16.04', '!=')
-
-- name: Install LXD
-  package:
-    name: "{{ item }}"
-    state: present
-  with_items:
-    - lxd
-    - lxd-client
+- name: Install LXD (ubuntu)
+  include_tasks: ubuntu.yml
   when: (ansible_os_family == 'Debian' and ansible_distribution_version is version('16.04','>')) or ansible_os_family != 'Debian'
 
-- name: Enable backports
-  apt_repository:
-    repo: deb http://archive.ubuntu.com/ubuntu xenial-backports main restricted universe multiverse
-    state: present
-    update_cache: true
+- name: Install LXD (xenial)
+  include_tasks: xenial.yml
   when: ansible_os_family == 'Debian' and ansible_distribution_version is version('16.04', '=')
-
-- name: Install LXD (from backports)
-  # this is necessary on xenial to get LXD 3 LTS rather than 2 LTS
-  apt:
-    name: "{{ item }}"
-    state: latest
-    default_release: xenial-backports
-  with_items:
-    - lxd
-    - lxd-client
-  when: ansible_os_family == 'Debian' and ansible_distribution_version is version('16.04', '=')
-  tags:
-    # yes I do want latest because an older version is already installed
-    - skip_ansible_lint
 
 - name: Create lxd-role dir
   file:
@@ -49,3 +20,21 @@
     owner: root
     group: root
   notify: init LXD
+
+- name: Raise kernel limits (sysctl)
+  # cf. https://lxd.readthedocs.io/en/latest/production-setup/
+  sysctl:
+    name: "{{ item.name }}"
+    value: "{{ item.value }}"
+    state: present
+  with_items:
+    - name: fs.inotify.max_queued_events
+      value: 1048576
+    - name: fs.inotify.max_user_instances
+      value: 1048576
+    - name: fs.inotify.max_user_watches
+      value: 1048576
+    - name: vm.max_map_count
+      value: 262144
+    - name: kernel.dmesg_restrict
+      value: 1

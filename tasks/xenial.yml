@@ -1,0 +1,19 @@
+---
+- name: Enable backports
+  apt_repository:
+    repo: deb http://archive.ubuntu.com/ubuntu xenial-backports main restricted universe multiverse
+    state: present
+    update_cache: true
+
+- name: Install LXD (from backports)
+  # this is necessary on xenial to get LXD 3 LTS rather than 2 LTS
+  apt:
+    name: "{{ item }}"
+    state: latest
+    default_release: xenial-backports
+  with_items:
+    - lxd
+    - lxd-client
+  tags:
+    # yes I do want latest because an older version is already installed
+    - skip_ansible_lint
