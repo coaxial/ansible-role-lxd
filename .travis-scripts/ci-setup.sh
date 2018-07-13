@@ -1,4 +1,5 @@
 #!/bin/bash
+# Mostly ripped off from https://github.com/lxdock/lxdock/blob/master/scripts/ci-base-setup.sh
 
 set -xe
 
