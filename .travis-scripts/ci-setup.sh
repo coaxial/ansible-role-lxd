@@ -3,14 +3,14 @@
 
 set -xe
 
-# sudo apt-get update
-# sudo apt-get install dnsmasq -y
-# sudo apt-get upgrade -t xenial-backports -y lxd lxd-client
+sudo apt-get update
+sudo apt-get install dnsmasq -y
+sudo apt-get upgrade -t xenial-backports -y lxd lxd-client
 # sudo -E apt-get install -y snapd
 # sudo snap install lxd
 # sudo snap list
-# lxc network create lxdbr0
-# lxc network attach-profile lxdbr0 default eth0
+lxc network create lxdbr0
+lxc network attach-profile lxdbr0 default eth0
 
 sudo lxd --version
 # sudo snap start lxd
@@ -21,13 +21,14 @@ sudo lxd --version
 while [ ! -S /var/lib/lxd/unix.socket ]; do
   sleep 0.5
 done
-ip a
 sudo chmod 666 /var/lib/lxd/unix.socket
 
 # lxd init now sets up a bridge so we no longer need to
 lxd init --auto
 
+ip a
 lxd network show lxdbr0
+ip a
 
 lxc launch ubuntu:18.04 ci -c security.nesting=true
 lxc info ci
