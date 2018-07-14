@@ -27,7 +27,7 @@ lxd init --auto
 ip a
 # lxc network create lxdbr0
 lxc profile show default
-lxc network attach-profile lxdbr0 default eth0
+# lxc network attach-profile lxdbr0 default eth0
 lxc profile show default
 
 lxd network show lxdbr0
