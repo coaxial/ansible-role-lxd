@@ -11,7 +11,7 @@ jobs:
       cache: pip
       dist: xenial
       sudo: required
-      install:
+      script:
         - .travis-scripts/ci-setup.sh
         # - sudo chown root:lxd /var/snap/lxd/common/lxd/unix.socket
         # - sudo chmod 660 /var/snap/lxd/common/lxd/unix.socket
@@ -22,7 +22,6 @@ jobs:
         - which molecule
         - lxc launch ubuntu:16.04 c1
         - lxc exec c1 -- echo 'hi mom'
-      script:
         - molecule --debug test
 
 notifications:
