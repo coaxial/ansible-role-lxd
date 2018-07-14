@@ -42,6 +42,7 @@ lxc exec ci -- ping -c3 1.1.1.1
 # lxc exec ci -- sh -c "sudo echo 'nameserver 1.1.1.1' > /etc/resolv.conf"
 lxc exec ci -- apt update
 lxc exec ci -- apt install python-pip -yq
+lxc exec ci -- lxd init --auto
 lxc exec ci -- pip install ansible
 lxc exec ci -- pip install molecule
 
