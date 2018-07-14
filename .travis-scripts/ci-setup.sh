@@ -19,32 +19,35 @@ sudo lxd --version
 while [ ! -S /var/lib/lxd/unix.socket ]; do
   sleep 0.5
 done
-sudo chmod 666 /var/lib/lxd/unix.socket
+# sudo chmod 666 /var/lib/lxd/unix.socket
 
-ip a
+# ip a
 # lxd init now sets up a bridge so we no longer need to
-lxd init --auto
-ip a
+sudo lxd init --auto
+sudo usermod -a -G lxd travis
+pip install ansible
+pip install molecule
+# ip a
 # lxc network create lxdbr0
-lxc profile show default
+# lxc profile show default
 # lxc network attach-profile lxdbr0 default eth0
-lxc profile show default
+# lxc profile show default
 
-lxc network show lxdbr0
-ip a
+# lxc network show lxdbr0
+# ip a
 
-lxc launch ubuntu:18.04 ci -c security.privileged=true -c security.nesting=true
-lxc file push -pr ./ ci/coaxial/ansible-role-lxd
-lxc info ci
-sleep 15
-lxc info ci
-lxc exec ci -- ping -c3 1.1.1.1
+# lxc launch ubuntu:18.04 ci -c security.privileged=true -c security.nesting=true
+# lxc file push -pr ./ ci/coaxial/ansible-role-lxd
+# lxc info ci
+# sleep 15
+# lxc info ci
+# lxc exec ci -- ping -c3 1.1.1.1
 # lxc exec ci -- sh -c "sudo echo 'nameserver 1.1.1.1' > /etc/resolv.conf"
-lxc exec ci -- apt update
-lxc exec ci -- apt install python-pip -yq
-lxc exec ci -- lxd init --auto
-lxc exec ci -- pip install ansible
-lxc exec ci -- pip install molecule
+# lxc exec ci -- apt update
+# lxc exec ci -- apt install python-pip -yq
+# lxc exec ci -- lxd init --auto
+# lxc exec ci -- pip install ansible
+# lxc exec ci -- pip install molecule
 
 # sudo virtualenv $HOME/travis-venv
 # source $HOME/travis-venv/bin/activate
