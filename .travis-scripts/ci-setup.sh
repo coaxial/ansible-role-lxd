@@ -20,9 +20,10 @@ sudo lxd --version
 while [ ! -S /var/lib/lxd/unix.socket ]; do
   sleep 0.5
 done
-sudo chmod 666 /var/lib/lxd/unix.socket
+# sudo chmod 666 /var/lib/lxd/unix.socket
 
-sudo usermod -a -G lxd travis
+# sudo usermod -a -G lxd travis
+sudo newgrp lxd
 
 # lxd init now sets up a bridge so we no longer need to
 lxd init --auto
