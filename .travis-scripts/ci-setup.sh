@@ -24,7 +24,7 @@ done
 # sudo chmod 666 /var/lib/lxd/unix.socket
 
 # sudo usermod -a -G lxd travis
-sudo newgrp lxd
+newgrp lxd
 
 # lxd init now sets up a bridge so we no longer need to
 lxd init --auto
