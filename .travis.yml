@@ -13,18 +13,7 @@ jobs:
       sudo: required
       install:
         - .travis-scripts/ci-setup.sh
-        # - sudo chown root:lxd /var/snap/lxd/common/lxd/unix.socket
-        # - sudo chmod 660 /var/snap/lxd/common/lxd/unix.socket
-        # - ls -clashB /var/snap/lxd/common/lxd/unix.socket
-        # - lxc list
-        # - sudo lxc list
-        # - sudo -E lxc list
-        # - which molecule
-        # - lxc launch ubuntu:16.04 c1
-        # - lxc exec c1 -- echo 'hi mom'
-        # - molecule --debug test
       script:
-        # - sudo bash -c 'source ~/virtualenv/python2.7/bin/activate && molecule --debut test'
         - sudo env "PATH=$PATH" molecule --debug test
 
 notifications:
