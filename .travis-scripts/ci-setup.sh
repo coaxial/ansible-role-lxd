@@ -4,6 +4,7 @@
 set -xe
 
 sudo apt-get update
+sudo apt-get install dnsmasq -y
 sudo apt-get upgrade -t xenial-backports -y lxd lxd-client
 # sudo -E apt-get install -y snapd
 # sudo snap install lxd
