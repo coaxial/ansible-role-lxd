@@ -24,7 +24,7 @@ jobs:
         # - lxc exec c1 -- echo 'hi mom'
         # - molecule --debug test
       script:
-        - sudo su travis -c 'molecule --debut test'
+        - sudo -E su travis -c 'molecule --debut test'
 
 notifications:
 webhooks: https://galaxy.ansible.com/api/v1/notifications/
