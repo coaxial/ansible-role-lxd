@@ -25,8 +25,10 @@ ip a
 # lxd init now sets up a bridge so we no longer need to
 lxd init --auto
 ip a
-lxc network create lxdbr0
+# lxc network create lxdbr0
+lxc profile show default
 lxc network attach-profile lxdbr0 default eth0
+lxc profile show default
 
 lxd network show lxdbr0
 ip a
