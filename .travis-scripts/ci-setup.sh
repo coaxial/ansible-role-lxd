@@ -9,8 +9,6 @@ sudo apt-get upgrade -t xenial-backports -y lxd lxd-client
 # sudo -E apt-get install -y snapd
 # sudo snap install lxd
 # sudo snap list
-lxc network create lxdbr0
-lxc network attach-profile lxdbr0 default eth0
 
 sudo lxd --version
 # sudo snap start lxd
@@ -23,10 +21,13 @@ while [ ! -S /var/lib/lxd/unix.socket ]; do
 done
 sudo chmod 666 /var/lib/lxd/unix.socket
 
+ip a
 # lxd init now sets up a bridge so we no longer need to
 lxd init --auto
-
 ip a
+lxc network create lxdbr0
+lxc network attach-profile lxdbr0 default eth0
+
 lxd network show lxdbr0
 ip a
 
