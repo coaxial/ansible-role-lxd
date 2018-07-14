@@ -30,7 +30,7 @@ lxc profile show default
 # lxc network attach-profile lxdbr0 default eth0
 lxc profile show default
 
-lxd network show lxdbr0
+lxc network show lxdbr0
 ip a
 
 lxc launch ubuntu:18.04 ci -c security.nesting=true
