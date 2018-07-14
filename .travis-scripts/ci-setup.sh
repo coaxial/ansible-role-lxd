@@ -39,7 +39,8 @@ sleep 15
 lxc info ci
 lxc exec ci -- ping -c3 1.1.1.1
 # lxc exec ci -- sh -c "sudo echo 'nameserver 1.1.1.1' > /etc/resolv.conf"
-lxc exec ci -- apt install git python python-pip -yq
+lxc exec ci -- apt update
+lxc exec ci -- apt install git python-pip -yq
 lxc exec ci -- pip install ansible
 lxc exec ci -- pip install molecule
 lxc exec ci -- git clone --depth=50 https://github.com/coaxial/ansible-role-lxd.git coaxial/ansible-role-lxd
