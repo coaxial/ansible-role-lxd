@@ -13,14 +13,15 @@ jobs:
       sudo: required
       install:
         - .travis-scripts/ci-setup.sh
-        - sudo chown root:lxd /var/snap/lxd/common/lxd/unix.socket
-        - sudo chmod 660 /var/snap/lxd/common/lxd/unix.socket
+        # - sudo chown root:lxd /var/snap/lxd/common/lxd/unix.socket
+        # - sudo chmod 660 /var/snap/lxd/common/lxd/unix.socket
         - ls -clashB /var/snap/lxd/common/lxd/unix.socket
+        - lxc list
         - sudo lxc list
         - sudo -E lxc list
         - which molecule
       script:
-        - sudo -E molecule --debug test
+        - sudo molecule --debug test
 
 notifications:
 webhooks: https://galaxy.ansible.com/api/v1/notifications/

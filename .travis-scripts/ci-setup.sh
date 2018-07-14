@@ -23,8 +23,8 @@ sudo usermod -a -G lxd travis
 # lxd init now sets up a bridge so we no longer need to
 sudo lxd init --auto
 
-sudo virtualenv $HOME/travis-venv
-source $HOME/travis-venv/bin/activate
-pip install --user molecule
-pip install --user ansible
-molecule test
+# sudo virtualenv $HOME/travis-venv
+# source $HOME/travis-venv/bin/activate
+sudo chmod 666 /var/snap/lxd/common/lxd/unix.socket
+pip install molecule
+pip install ansible
