@@ -21,6 +21,7 @@ sudo lxd --version
 while [ ! -S /var/lib/lxd/unix.socket ]; do
   sleep 0.5
 done
+ip a
 sudo chmod 666 /var/lib/lxd/unix.socket
 
 # lxd init now sets up a bridge so we no longer need to
