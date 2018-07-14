@@ -54,5 +54,6 @@ pip install molecule
 # sudo chmod 666 /var/snap/lxd/common/lxd/unix.socket
 # pip install molecule
 # pip install ansible
+env
 sudo env
 sudo -E env
