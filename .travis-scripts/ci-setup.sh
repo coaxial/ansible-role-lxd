@@ -8,7 +8,6 @@ sudo apt-get upgrade -t xenial-backports -y lxd lxd-client
 # sudo -E apt-get install -y snapd
 # sudo snap install lxd
 # sudo snap list
-sudo chmod 666 /var/lib/lxd/unix.socket
 lxc network create lxdbr0
 lxc network attach-profile lxdbr0 default eth0
 
@@ -21,6 +20,7 @@ sudo lxd --version
 while [ ! -S /var/lib/lxd/unix.socket ]; do
   sleep 0.5
 done
+sudo chmod 666 /var/lib/lxd/unix.socket
 
 sudo usermod -a -G lxd travis
 
@@ -28,6 +28,7 @@ sudo usermod -a -G lxd travis
 lxd init --auto
 
 lxc launch ubuntu:18.04 ci -c security.nesting=true
+lxc info ci
 lxc exec ci -- ping -c3 1.1.1.1
 lxc exec ci -- sh -c "sudo echo 'nameserver 1.1.1.1' > /etc/resolv.conf"
 lxc exec ci -- apt install git python -yq
