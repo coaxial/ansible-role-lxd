@@ -8,6 +8,7 @@ sudo apt-get upgrade -y lxd lxd-client
 # sudo -E apt-get install -y snapd
 # sudo snap install lxd
 # sudo snap list
+sudo chmod 666 /var/snap/lxd/common/lxd/unix.socket
 sudo lxd --version
 # sudo snap start lxd
 
@@ -18,7 +19,6 @@ while [ ! -S /var/lib/lxd/unix.socket ]; do
   sleep 0.5
 done
 
-# sudo chmod 666 /var/snap/lxd/common/lxd/unix.socket
 sudo usermod -a -G lxd travis
 
 # lxd init now sets up a bridge so we no longer need to
