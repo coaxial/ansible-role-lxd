@@ -1,7 +1,4 @@
 ---
-env:
-  global:
-    - PATH=/snap/bin:$PATH
 jobs:
   include:
     - &test
@@ -14,7 +11,8 @@ jobs:
       install:
         - .travis-scripts/ci-setup.sh
       script:
-        - sudo env "PATH=$PATH" molecule --debug test
+        # https://unix.stackexchange.com/questions/83191/how-to-make-sudo-preserve-path
+        - sudo env "PATH=$PATH" molecule test
 
 notifications:
-webhooks: https://galaxy.ansible.com/api/v1/notifications/
+  webhooks: https://galaxy.ansible.com/api/v1/notifications/
