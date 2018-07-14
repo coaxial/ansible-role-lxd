@@ -8,7 +8,7 @@ sudo apt-get upgrade -y lxd lxd-client
 # sudo -E apt-get install -y snapd
 # sudo snap install lxd
 # sudo snap list
-sudo chmod 666 /var/snap/lxd/common/lxd/unix.socket
+sudo chmod 666 /var/lib/lxd/unix.socket
 sudo lxd --version
 # sudo snap start lxd
 
