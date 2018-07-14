@@ -22,7 +22,7 @@ jobs:
         - sudo -E lxc list
         - which molecule
       script:
-        - sudo -E molecule --debug test
+        - sudo -E `which molecule` --debug test
 
 notifications:
 webhooks: https://galaxy.ansible.com/api/v1/notifications/
