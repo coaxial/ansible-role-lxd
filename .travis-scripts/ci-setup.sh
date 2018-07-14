@@ -20,7 +20,7 @@ sudo chmod 666 /var/snap/lxd/common/lxd/unix.socket
 sudo usermod -a -G lxd travis
 
 # lxd init now sets up a bridge so we no longer need to
-sudo lxd init --auto
+lxd init --auto
 
 lxc launch ubuntu:18.04 ci -c security.nesting=true
 lxc exec ci -- apt install git python -yq
