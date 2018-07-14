@@ -20,6 +20,8 @@ jobs:
         - sudo lxc list
         - sudo -E lxc list
         - which molecule
+        - lxc launch ubuntu:16.04 c1
+        - lxc exec c1 -- echo 'hi mom'
       script:
         - molecule --debug test
 
