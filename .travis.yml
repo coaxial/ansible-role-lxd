@@ -12,8 +12,8 @@ jobs:
       dist: xenial
       sudo: required
       install:
-        - sudo pip install ansible
-        - sudo pip install molecule
+        - sudo -H pip install ansible
+        - sudo -H pip install molecule
         - .travis-scripts/ci-setup.sh
         - sudo chown root:lxd /var/snap/lxd/common/lxd/unix.socket
         - sudo chmod 660 /var/snap/lxd/common/lxd/unix.socket
