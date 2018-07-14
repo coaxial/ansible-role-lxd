@@ -27,6 +27,8 @@ sudo chmod 666 /var/lib/lxd/unix.socket
 # lxd init now sets up a bridge so we no longer need to
 lxd init --auto
 
+lxd network show lxdbr0
+
 lxc launch ubuntu:18.04 ci -c security.nesting=true
 lxc info ci
 lxc exec ci -- ping -c3 1.1.1.1
