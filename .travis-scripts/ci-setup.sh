@@ -1,22 +1,22 @@
 #!/bin/bash
 # Mostly ripped off from https://github.com/lxdock/lxdock/blob/master/scripts/ci-base-setup.sh
 
-sudo -E apt-get update
-sudo -E apt-get purge -y lxd lxd-client
-sudo -E apt-get install -y snapd
-sudo snap install lxd
-sudo snap list
+sudo apt-get update
+sudo apt-get upgrade -y lxd lxd-client
+# sudo -E apt-get install -y snapd
+# sudo snap install lxd
+# sudo snap list
 sudo lxd --version
-sudo snap start lxd
+# sudo snap start lxd
 
-export PATH="/snap/bin:$PATH"
+# export PATH="/snap/bin:$PATH"
 
 # lxd waitready times out
-while [ ! -S /var/snap/lxd/common/lxd/unix.socket ]; do
+while [ ! -S /var/lib/lxd/unix.socket ]; do
   sleep 0.5
 done
 
-sudo chmod 666 /var/snap/lxd/common/lxd/unix.socket
+# sudo chmod 666 /var/snap/lxd/common/lxd/unix.socket
 sudo usermod -a -G lxd travis
 
 # lxd init now sets up a bridge so we no longer need to
