@@ -9,6 +9,9 @@ sudo apt-get upgrade -y lxd lxd-client
 # sudo snap install lxd
 # sudo snap list
 sudo chmod 666 /var/lib/lxd/unix.socket
+lxc network create lxdbr0
+lxc network attach-profile lxdbr0 default eth0
+
 sudo lxd --version
 # sudo snap start lxd
 
