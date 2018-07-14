@@ -24,7 +24,7 @@ jobs:
         # - lxc exec c1 -- echo 'hi mom'
         # - molecule --debug test
       script:
-        - sudo env molecule --debut test
+        - sudo bash -c 'source ~/virtualenv/python2.7/bin/activate && molecule --debut test'
 
 notifications:
 webhooks: https://galaxy.ansible.com/api/v1/notifications/
