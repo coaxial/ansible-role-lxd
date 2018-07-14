@@ -57,4 +57,4 @@ pip install molecule
 env
 sudo env
 sudo -E env
-sudo bash -c 'source source ~/virtualenv/python2.7/bin/activate && env'
+sudo bash -c 'source ~/virtualenv/python2.7/bin/activate && env'
