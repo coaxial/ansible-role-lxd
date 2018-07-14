@@ -33,7 +33,7 @@ lxc profile show default
 lxc network show lxdbr0
 ip a
 
-lxc launch ubuntu:18.04 ci -c security.nesting=true
+lxc launch ubuntu:18.04 ci -c security.privileged=true -c security.nesting=true
 lxc file push -pr ./ ci/coaxial/ansible-role-lxd
 lxc info ci
 sleep 15
