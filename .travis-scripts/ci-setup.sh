@@ -28,7 +28,7 @@ sudo usermod -a -G lxd travis
 lxd init --auto
 
 lxc launch ubuntu:18.04 ci -c security.nesting=true
-lxc exec ci -- "echo 'nameserver 1.1.1.1' > /etc/resolv.conf"
+lxc exec ci -- echo 'nameserver 1.1.1.1' > /etc/resolv.conf
 lxc exec ci -- apt install git python -yq
 lxc exec ci -- pip install ansible
 lxc exec ci -- pip install molecule
