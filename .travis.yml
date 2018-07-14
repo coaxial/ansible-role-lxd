@@ -11,18 +11,20 @@ jobs:
       cache: pip
       dist: xenial
       sudo: required
-      script:
+      install:
         - .travis-scripts/ci-setup.sh
         # - sudo chown root:lxd /var/snap/lxd/common/lxd/unix.socket
         # - sudo chmod 660 /var/snap/lxd/common/lxd/unix.socket
-        - ls -clashB /var/snap/lxd/common/lxd/unix.socket
-        - lxc list
-        - sudo lxc list
-        - sudo -E lxc list
-        - which molecule
-        - lxc launch ubuntu:16.04 c1
-        - lxc exec c1 -- echo 'hi mom'
-        - molecule --debug test
+        # - ls -clashB /var/snap/lxd/common/lxd/unix.socket
+        # - lxc list
+        # - sudo lxc list
+        # - sudo -E lxc list
+        # - which molecule
+        # - lxc launch ubuntu:16.04 c1
+        # - lxc exec c1 -- echo 'hi mom'
+        # - molecule --debug test
+      script:
+        - lxc exec ci -- bash -c 'cd coaxial/ansible-role-lxd && molecule --debug test'
 
 notifications:
 webhooks: https://galaxy.ansible.com/api/v1/notifications/
