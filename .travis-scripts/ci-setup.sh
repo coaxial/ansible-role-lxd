@@ -16,15 +16,16 @@ sudo lxd --version
 # export PATH="/snap/bin:$PATH"
 
 # lxd waitready times out
-while [ ! -S /var/lib/lxd/unix.socket ]; do
-  sleep 0.5
-done
+# while [ ! -S /var/lib/lxd/unix.socket ]; do
+#   sleep 0.5
+# done
+sudo lxd waitready
 # sudo chmod 666 /var/lib/lxd/unix.socket
 
 # ip a
 # lxd init now sets up a bridge so we no longer need to
 sudo lxd init --auto
-sudo usermod -a -G lxd travis
+# sudo usermod -a -G lxd travis
 pip install ansible
 pip install molecule
 # ip a
