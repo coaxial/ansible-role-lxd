@@ -34,16 +34,16 @@ lxc network show lxdbr0
 ip a
 
 lxc launch ubuntu:18.04 ci -c security.nesting=true
+lxc file push coaxial/ansible-role-lxd ci/coaxial/ansible-role-lxd
 lxc info ci
 sleep 15
 lxc info ci
 lxc exec ci -- ping -c3 1.1.1.1
 # lxc exec ci -- sh -c "sudo echo 'nameserver 1.1.1.1' > /etc/resolv.conf"
 lxc exec ci -- apt update
-lxc exec ci -- apt install git python-pip -yq
+lxc exec ci -- apt install python-pip -yq
 lxc exec ci -- pip install ansible
 lxc exec ci -- pip install molecule
-lxc exec ci -- git clone --depth=50 https://github.com/coaxial/ansible-role-lxd.git coaxial/ansible-role-lxd
 
 # sudo virtualenv $HOME/travis-venv
 # source $HOME/travis-venv/bin/activate
