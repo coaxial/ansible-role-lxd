@@ -25,6 +25,6 @@ sudo lxd init --auto
 
 sudo virtualenv $HOME/travis-venv
 source $HOME/travis-venv/bin/activate
-pip install molecule
-pip install ansible
+pip install --user molecule
+pip install --user ansible
 molecule test
