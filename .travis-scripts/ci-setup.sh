@@ -1,6 +1,8 @@
 #!/bin/bash
 # Mostly ripped off from https://github.com/lxdock/lxdock/blob/master/scripts/ci-base-setup.sh
 
+set -xe
+
 sudo apt-get update
 sudo apt-get upgrade -y lxd lxd-client
 # sudo -E apt-get install -y snapd
