@@ -35,8 +35,10 @@ ip a
 
 lxc launch ubuntu:18.04 ci -c security.nesting=true
 lxc info ci
+sleep 15
+lxc info ci
 lxc exec ci -- ping -c3 1.1.1.1
-lxc exec ci -- sh -c "sudo echo 'nameserver 1.1.1.1' > /etc/resolv.conf"
+# lxc exec ci -- sh -c "sudo echo 'nameserver 1.1.1.1' > /etc/resolv.conf"
 lxc exec ci -- apt install git python -yq
 lxc exec ci -- pip install ansible
 lxc exec ci -- pip install molecule
