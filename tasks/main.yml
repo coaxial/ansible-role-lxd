@@ -1,2 +1,42 @@
 ---
-# tasks file for ansible-role-lxd
+- name: Install LXD (ubuntu)
+  include_tasks: ubuntu.yml
+  when: >
+    (ansible_os_family == 'Debian' and ansible_distribution_version is version('16.04','>'))
+    or ansible_os_family != 'Debian'
+
+- name: Install LXD (xenial)
+  include_tasks: xenial.yml
+  when: ansible_os_family == 'Debian' and ansible_distribution_version is version('16.04', '=')
+
+- name: Create lxd-role dir
+  file:
+    path: /usr/share/lxd-role
+    state: directory
+
+- name: Generate LXD preseed file
+  template:
+    src: preseed.yml.j2
+    dest: /usr/share/lxd-role/preseed.yml
+    mode: 0600
+    owner: root
+    group: root
+  notify: init LXD
+
+- name: Raise kernel limits (sysctl)
+  # cf. https://lxd.readthedocs.io/en/latest/production-setup/
+  sysctl:
+    name: "{{ item.name }}"
+    value: "{{ item.value }}"
+    state: present
+  with_items:
+    - name: fs.inotify.max_queued_events
+      value: 1048576
+    - name: fs.inotify.max_user_instances
+      value: 1048576
+    - name: fs.inotify.max_user_watches
+      value: 1048576
+    - name: vm.max_map_count
+      value: 262144
+    - name: kernel.dmesg_restrict
+      value: 1

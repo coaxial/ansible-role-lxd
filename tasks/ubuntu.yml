@@ -1,0 +1,13 @@
+---
+- name: Update apt cache
+  apt:
+    update_cache: true
+    cache_valid_time: 216000  # 24 hours
+
+- name: Install LXD
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - lxd
+    - lxd-client
