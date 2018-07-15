@@ -2,7 +2,7 @@ LXD Ansible role
 =========
 [![Build Status](https://travis-ci.org/coaxial/ansible-role-lxd.svg?branch=master)](https://travis-ci.org/coaxial/ansible-role-lxd)
 
-Install and configure LXD.
+Install and configure [LXD](https://linuxcontainers.org/) on a host.
 
 Requirements
 ------------
