@@ -12,4 +12,5 @@ galaxy_info:
         - bionic
         - cosmic
   galaxy_tags: []
-dependencies: []
+  dependencies: []
+  role_name: lxd
